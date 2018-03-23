@@ -9,7 +9,16 @@ function normalizeSelectedIndex(selectedIndex, max) {
   return index;
 }
 
+/**
+ * Props:
+ * - typeaheadToken?: string
+ */
+
 class TypeaheadEditor extends Editor {
+  static defaultProps = {
+    typeaheadToken: '@',
+  }
+
   constructor(props) {
     super(props);
     this.typeaheadState = null;
@@ -45,7 +54,7 @@ class TypeaheadEditor extends Editor {
     text = text.substring(0, range.startOffset);
 
     // ..and before the typeahead token.
-    const index = text.lastIndexOf('@');
+    const index = text.lastIndexOf(this.props.typeaheadToken);
     if (index === -1) {
       return null;
     }
