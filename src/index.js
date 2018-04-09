@@ -11,8 +11,9 @@ function normalizeSelectedIndex(selectedIndex, max) {
 
 /**
  * Props:
- * - typeaheadToken?: string
  * - editorRef?: Function
+ * - handleReturn?: Function
+ * - typeaheadToken?: string
  */
 
 class TypeaheadEditor extends Editor {
@@ -164,6 +165,9 @@ class TypeaheadEditor extends Editor {
         );
       }
       return true;
+    }
+    if (this.props.handleReturn) {
+      return this.props.handleReturn();
     }
     return false;
   };
