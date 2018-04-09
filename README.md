@@ -1,4 +1,4 @@
-# draft-js-typeahead
+# Draft.js Typeahead
 
 [![NPM version][npm-image]][npm-url]
 
@@ -8,11 +8,9 @@ Typeaheads for [Draft.js](https://github.com/facebook/draft-js) inspired by Face
 
 [Check out an example of mentions in draft using draft-js-typeahead here. 🎉](http://dooly-ai.github.io/draft-js-typeahead/)
 
-This package provides a higher-order component that wraps draft's `Editor` component and augments it with typeahead superpowers. One popular use for draft-js-typeahead is to add mentions to your editors.
+This package provides a higher-order component that wraps draft's `Editor` component and augments it with typeahead superpowers. One popular use for `draft-js-typeahead` is to add mentions to your editors.
 
--
-
-draft-js-typeahead helps in three ways:
+`draft-js-typeahead` helps in three ways:
  - It figures out *if* and *where* the typeahead should be showing.
  - It keeps track of the typeahead's highlighted item.
  - It triggers a callback when an item is selected (by hitting return).
@@ -21,7 +19,7 @@ draft-js-typeahead helps in three ways:
 ## Installation
 
 ```sh
-$ npm install --save draft-js-typeahead
+$ npm install --save @goco/draft-js-typeahead
 ```
 
 
@@ -35,20 +33,31 @@ $ npm install --save draft-js-typeahead
 First we'll need to import `TypeaheadEditor`:
 
 ```javascript
-import { TypeaheadEditor } from 'draft-js-typeahead';
+import { TypeaheadEditor } from '@goco/draft-js-typeahead';
 ```
 
-`TypeaheadEditor` is a react component that wraps draft's `Editor`.
+`TypeaheadEditor` is a react component that wraps draft's `Editor`. It supports all of the same properties as the latter, as well as a few others:
 
--
+```
+onTypeaheadChange(typeaheadState: TypeaheadState) => void
+```
 
-It supports all of the same properties as the latter, as well as a few others:
 
-`onTypeaheadChange => (typeaheadState)`:
+If there was a type called `TypeaheadState`, it would be like this:
+```typescript
+type TypeaheadState = {
+  left: number,
+  top: number,
+  text: string,
+  selectedIndex: number,
+}
+```
 
 This method is called when the typeahead's *visibility*, *position*, or *text* changes. `typeaheadState` is an object with `left`, `top`, `text`, and `selectedIndex` properties. A typical callback sets `typeaheadState` on its own state and uses it to render an overlay in its component's `render` method. This method is also called when the typeahead is hidden by passing `null` to `typeaheadState`.
 
-`handleTypeaheadReturn => (text, selectedIndex, selection)`:
+```
+handleTypeaheadReturn(text: string, selectedIndex: number, selection: DraftJs.SelectionState) => void
+```
 
 This method is called when an item in the typeahead is selected (by hitting return). A typical callback autocompletes the editor with the selected item and tags it with a draft entity.
 
@@ -60,5 +69,5 @@ This method is called when an item in the typeahead is selected (by hitting retu
 MIT © [Justin Vaillancourt](mailto:justin@dooly.ai)
 
 
-[npm-image]: https://badge.fury.io/js/draft-js-typeahead.svg
-[npm-url]: https://npmjs.org/package/draft-js-typeahead
+[npm-image]: https://badge.fury.io/js/%40goco%2Fdraft-js-typeahead.svg
+[npm-url]: https://www.npmjs.com/package/@goco/draft-js-typeahead
