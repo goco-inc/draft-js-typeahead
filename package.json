@@ -1,6 +1,6 @@
 {
   "name": "@goco/draft-js-typeahead",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Typeaheads for Draft.js inspired by Facebook.com",
   "keywords": [
     "react",
@@ -21,7 +21,7 @@
     "lib"
   ],
   "main": "lib/index.js",
-  "repository": "dooly-ai/draft-js-typeahead",
+  "repository": "goco-inc/draft-js-typeahead",
   "scripts": {
     "prepublish": "gulp"
   },
