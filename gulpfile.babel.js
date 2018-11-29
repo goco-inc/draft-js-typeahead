@@ -8,7 +8,9 @@ const buildDist = (opts) => {
   const webpackOpts = {
     debug: opts.debug,
     externals: {
-      React: 'React',
+      'immutable': 'Immutable',
+      'react-dom': 'ReactDOM',
+      'react': 'React',
       'draft-js': 'Draft'
     },
     output: {
